@@ -1,23 +1,56 @@
-// First way to fetch data from external api asynchronisly using async/await
-const getResource = async (url) => {
-    const res = await fetch(url);
 
-    if (!res.o) {
-        throw new Error(`Could not fetch ${url}, recieved ${res.status}`)
+class SwapiService {
+
+    _apiBase = 'https://swapi.co/api';
+
+    async getResource(url) {
+        const res = await fetch(`${this._apiBase}${url}`);
+        return await res.json();
     }
 
-    const body = await res.json();
-    return body;
+    async getAllPeople() {
+        const res = await this.getResource(`/people/`);
+        return res.results;
+    }
+
+    getPerson(id) {
+        return this.getResource(`/people/${id}/`);
+    }
+
+    async getAllPlanets() {
+        const res = await this.getResource(`/planets/`);
+        return res.results;
+    }
+
+    getPlanet(id) {
+        return this.getResource(`/planets/${id}/`);
+    }
+
+    async getAllStarships() {
+        const res = await this.getResource(`/starships/`);
+        return res.results;
+    }
+
+    getStarship(id) {
+        return this.getResource(`/starships/${id}/`);
+    }
 }
 
 
-getResource('https:/as/swapi.co/api/people/12134321413541345')
-    .then((body) => {
-        console.log(body);
+// Check it
+const swapi = new SwapiService();
+
+swapi.getAllPeople().then((people) => {
+    people.forEach((p) => {
+        console.log(p.name);
     })
-    .catch((err) => {
-        console.log('Could not fetch', err)
-    });
+});
+
+swapi.getPerson(1).then((pers) => {
+    console.log(pers.height);
+});
+
+
 
 
 

@@ -1,4 +1,6 @@
 
+
+
 class SwapiService {
 
     _apiBase = 'https://swapi.co/api';
@@ -8,48 +10,43 @@ class SwapiService {
         return await res.json();
     }
 
-    async getAllPeople() {
+    async getAllPeople(){
         const res = await this.getResource(`/people/`);
-        return res.results;
+        return await res.results;
     }
 
     getPerson(id) {
-        return this.getResource(`/people/${id}/`);
+        return this.getResource(`/people/${id}`);
     }
 
-    async getAllPlanets() {
+    async getAllPlanets(){
         const res = await this.getResource(`/planets/`);
-        return res.results;
+        return await res.results;
     }
 
     getPlanet(id) {
-        return this.getResource(`/planets/${id}/`);
+        return this.getResource(`/planets/${id}`);
     }
 
-    async getAllStarships() {
+    async getAllStarships(){
         const res = await this.getResource(`/starships/`);
-        return res.results;
+        return await res.results;
     }
 
     getStarship(id) {
-        return this.getResource(`/starships/${id}/`);
+        return this.getResource(`/starships/${id}`);
     }
 }
 
-
-// Check it
 const swapi = new SwapiService();
 
-swapi.getAllPeople().then((people) => {
-    people.forEach((p) => {
-        console.log(p.name);
-    })
+swapi.getAllPeople().then((b) => {
+    console.log(b);
 });
 
-swapi.getPerson(1).then((pers) => {
-    console.log(pers.height);
-});
-
+swapi.getPerson(3).then((person) => {
+    console.log(person.name);
+})
 
 
 

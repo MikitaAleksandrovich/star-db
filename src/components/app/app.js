@@ -2,12 +2,14 @@ import React from 'react';
 import './app.css';
 
 import Header from '../header';
+import RandomPlanet from '../random-planet/random-planet';
 
 
 const App = () => {
     return(
-        <div>
+        <div className="app">
             <Header />
+            <RandomPlanet/>
         </div>
     )
 }

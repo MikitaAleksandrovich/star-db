@@ -1,19 +1,19 @@
 import React from 'react';
-import './app.css';
 
 import Header from '../header';
 import RandomPlanet from '../random-planet/random-planet';
 import ItemList from '../item-list';
 import PersonDetails from '../person-details';
 
+import './app.css';
 
 
 const App = () => {
     return(
         <div className="app">
             <Header />
-            <RandomPlanet/>
-            <div className="row">
+            <RandomPlanet />
+            <div className="row mb2">
                 <div className="col-md-6">
                     <ItemList />
                 </div>
@@ -23,7 +23,7 @@ const App = () => {
             </div>
         </div>
     )
-}
+};
 
 export default App;
 

@@ -26,5 +26,5 @@ export default class ItemList extends Component {
             </li>
           </ul>
         );
-      }
-}
+    }
+};

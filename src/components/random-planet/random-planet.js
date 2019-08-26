@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SwapiService from '../../service/swapi-service';
 import Spinner from '../spinner';
+import ErrorIndicator from '../error-indicator';
 
 import './random-planet.css';
 
@@ -9,7 +10,8 @@ export default class RandomPlanet extends Component {
 
     state = {
         planet: {},
-        loading: true
+        loading: true,
+        error: false
     };
 
     SwapiService = new SwapiService();
@@ -26,24 +28,33 @@ export default class RandomPlanet extends Component {
         })
     }
 
+    onError = (err) => {
+        this.setState({
+            error: true,
+            loading: false
+        })
+    };
+
     updatePlanet() {
-        const id = Math.floor(Math.random() * 25 + 2);
+        const id = 154345452;
         this.SwapiService
             .getPlanet(id)
-            .then(this.onPlanetLoader);
+            .then(this.onPlanetLoader)
+            .catch(this.onError);
     };
 
     
     render() {
 
-        const { planet, loading } = this.state;
+        const { planet, loading, error } = this.state;
 
+        const errorMessage = error ? <ErrorIndicator/> : null;
         const spinner = loading ? <Spinner/> : null;
-        const planetContent = !loading ? <RandomPlanetContent planet={planet}/> : null; 
-
+        const planetContent = !loading && !error ? <RandomPlanetContent planet={planet}/> : null;
 
         return (
             <div className="random-planet jumbotron rounded">
+                {errorMessage}
                 {spinner}
                 {planetContent}
             </div>
@@ -59,7 +70,7 @@ const RandomPlanetContent = ({ planet }) => {
     return (
         <React.Fragment>
                 <img className="planet-image"
-                src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}></img>
+                src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} alt="planet-image"></img>
                 <div>
                     <h4 className="planet-name">{name}</h4>
                     <ul className="list-group list-group-flush">

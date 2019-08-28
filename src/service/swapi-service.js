@@ -1,5 +1,3 @@
-
-
 export default class SwapiService {
 
     _apiBase = 'https://swapi.co/api';
@@ -9,7 +7,7 @@ export default class SwapiService {
         return await res.json();
     }
 
-    async getAllPeople(){
+    async getAllPeople() {
         const res = await this.getResource(`/people/`);
         return await res.results.map(this._transformPerson);
     }

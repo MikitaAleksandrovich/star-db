@@ -19,7 +19,7 @@ export default class RandomPlanet extends Component {
 
     componentDidMount() {
         this.updatePlanet();
-        setInterval(this.updatePlanet, 7000);
+        setInterval(this.updatePlanet, 5000);
     }
 
     onPlanetLoader = (planet) => {

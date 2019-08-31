@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import ItemList from '../item-list';
 import PersonDetails from '../person-details';
+import ErrorIndicator from '../error-indicator';
 
-import './people-page';
 
 export default class PeoplePage extends Component {
 
     state = {
-        selectedPerson: 3
+        selectedPerson: null,
+        hasError: false,
     }
 
     onPersonSelected = (id) => {
@@ -16,7 +17,20 @@ export default class PeoplePage extends Component {
         });
     }
 
+    componentDidCatch() {
+        console.log('componentDidCatch()');
+        this.setState({
+            hasError: true,
+        })
+    }
+    
+
     render() {
+
+        if(this.state.hasError) {
+            return <ErrorIndicator/>
+        }
+
         return (
             <div className="row mb2">
             <div className="col-md-6">

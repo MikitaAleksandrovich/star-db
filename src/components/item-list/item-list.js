@@ -45,9 +45,11 @@ export default class ItemList extends Component {
       const items = this.renderItem(peopleList);
 
         return (
-          <ul className="item-list list-group">
-            {items}
-          </ul>
+          <div>
+              <ul className="item-list list-group">
+                {items}
+              </ul>
+          </div>
         );
     }
 };

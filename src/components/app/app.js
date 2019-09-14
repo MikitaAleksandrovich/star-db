@@ -52,8 +52,9 @@ export default class App extends Component {
                 Toggle Random Planet
             </button>
             <ErrorButton />
-            
+
             <PeoplePage/>
+       
         </div>
         )
     }

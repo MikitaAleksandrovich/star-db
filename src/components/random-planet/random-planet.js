@@ -16,7 +16,7 @@ export default class RandomPlanet extends Component {
 
     SwapiService = new SwapiService();
 
-
+    
     componentDidMount() {
         this.updatePlanet();
         this.interval = setInterval(this.updatePlanet, 5000);

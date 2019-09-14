@@ -9,15 +9,16 @@ export default class ItemList extends Component {
   SwapiService = new SwapiService();
 
   state = {
-    peopleList: null
+    peopleList: null,
+    loading: true,
   }
 
   componentDidMount() {
     this.SwapiService.getAllPeople().then((peopleList) => {
       this.setState({
-        peopleList,
+        peopleList: peopleList,
+        loading: false,
       })
-      console.log(this.state.peopleList);
     })
   }
 
@@ -36,9 +37,9 @@ export default class ItemList extends Component {
 
     render() {
 
-      const { peopleList } = this.state;
+      const { peopleList, loading } = this.state;
 
-      if(!peopleList) {
+      if(loading) {
         return <Spinner />
       }
 

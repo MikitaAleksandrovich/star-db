@@ -1,5 +1,6 @@
 import React, { Component }from 'react';
 
+
 import Header from '../header';
 import RandomPlanet from '../random-planet/random-planet';
 import ErrorIndicator from '../error-indicator';
@@ -51,13 +52,8 @@ export default class App extends Component {
                 Toggle Random Planet
             </button>
             <ErrorButton />
-
-            <PeoplePage/>
-
-            <PeoplePage/>
-
-            <PeoplePage/>
             
+            <PeoplePage/>
         </div>
         )
     }

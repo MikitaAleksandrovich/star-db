@@ -9,7 +9,7 @@ import PeoplePage from '../people-page';
 import ItemList from '../item-list';
 import PersonDetails from '../person-details';
 import SwapiService from '../../service/swapi-service';
-
+import Row from '../row';
 
 import './app.css';
 
@@ -82,7 +82,6 @@ export default class App extends Component {
                 <PersonDetails personId={this.state.selectedPerson}/>
             </div>
         </div>
-       
         </div>
         )
     }

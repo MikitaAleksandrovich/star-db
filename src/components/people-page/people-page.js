@@ -5,7 +5,25 @@ import ErrorIndicator from '../error-indicator';
 import SwapiService from '../../service/swapi-service';
 import Row from '../row';
 
+class ErrorBoundry extends Component {
 
+    state = {
+        hasError: false,
+    }
+
+    componentDidCatch() {
+        this.setState({
+            hasError: true,
+        })
+    }
+
+    render() {
+        if(this.state.hasError) {
+            return <ErrorIndicator/>
+        }
+        return this.props.children;
+    }
+}
 
 export default class PeoplePage extends Component {
 
@@ -13,20 +31,12 @@ export default class PeoplePage extends Component {
 
     state = {
         selectedPerson: null,
-        hasError: false,
     }
 
     onPersonSelected = (id) => {
         this.setState({
             selectedPerson: id,
         });
-    }
-
-    componentDidCatch() {
-        console.log('componentDidCatch()');
-        this.setState({
-            hasError: true,
-        })
     }
     
 
@@ -40,15 +50,15 @@ export default class PeoplePage extends Component {
         );
 
         const personDetails = (
+            <ErrorBoundry>
             <PersonDetails personId={this.state.selectedPerson}/>
+            </ErrorBoundry>
         );
 
-        if(this.state.hasError) {
-            return <ErrorIndicator/>
-        }
-
         return (
+            
             <Row left={itemList} right={personDetails} />
+        
         );
     }
 }

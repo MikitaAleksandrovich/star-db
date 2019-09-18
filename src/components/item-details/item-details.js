@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import SwapiService from '../../service/swapi-service';
 import ErrorButton from '../error-button';
 
-import './person-details.css';
+import './item-details.css';
 
 
-
-export default class PersonDetails extends Component {
-
-  SwapiService = new SwapiService();
+export default class ItemDetails extends Component {
 
   state = {
-    person: null,
+    item: null,
+    image: null,
   }
 
   componentDidMount() {
@@ -25,32 +22,36 @@ export default class PersonDetails extends Component {
   }
 
   updatePerson() {
-    const { personId } = this.props;
+    const { itemId, getData, getImageUrl } = this.props;
 
-    if(!personId) {
+    if(!itemId) {
       return;
     }
 
-    this.SwapiService.getPerson(personId).then((person) => {
+    getData(itemId)
+      .then((item) => {
       this.setState({
-        person,
+        item,
+        image: getImageUrl(item),
       })
     })
   }
 
     render() {
 
-      if(!this.state.person) {
+      const { image, item } = this.state;
+
+      if(!this.state.item) {
         return <span className="notSelected"> Please, select a person from a list</span>
       }
 
-      const { id, name, gender, birthYear, eyeColor } = this.state.person;
+      const { name, gender, birthYear, eyeColor } = item;
 
 
         return (
-            <div className="person-details card">
-              <img className="person-image"
-                src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
+            <div className="item-details card">
+              <img className="item-image"
+                src={image} alt={name}/>
               <div className="card-body">
                 <h4>{name}</h4>
                 <ul className="list-group list-group-flush">

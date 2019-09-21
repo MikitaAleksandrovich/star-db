@@ -50,7 +50,6 @@ export default class ItemDetails extends Component {
     })
   }
 
-
     render() {
 
       const { image, item } = this.state;
@@ -59,9 +58,7 @@ export default class ItemDetails extends Component {
         return <span className="notSelected"> Please, select a person from a list</span>
       }
 
-      const { name } = item;
-
-      
+      const { name, gender, birthYear, eyeColor } = item;
 
 
         return (

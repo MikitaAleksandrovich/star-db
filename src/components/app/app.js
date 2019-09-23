@@ -3,13 +3,7 @@ import React, { Component }from 'react';
 import Header from '../header';
 import RandomPlanet from '../random-planet/random-planet';
 import ErrorIndicator from '../error-indicator';
-import ErrorButton from '../error-button';
-import ItemList from '../item-list';
-import PeoplePage from '../people-page';
 import ErrorBoundry from '../error-boundry';
-import ItemDetails, { Fields } from '../item-details/item-details';
-import SwapiService from '../../service/swapi-service';
-import Row from '../row';
 import {
     PersonList,
     PlanetList,
@@ -24,8 +18,6 @@ import './app.css';
 
 
 export default class App extends Component {
-
-    swapiService = new SwapiService();
 
     state = {
         showRandomPlanet: false,
@@ -55,39 +47,17 @@ export default class App extends Component {
 
         const planet = this.state.showRandomPlanet ? <RandomPlanet/> : null;
 
-        const  { getPerson, getPersonImage, 
-                getStarship, getStarshipImage,
-                getAllPeople, getAllStarships,
-                getAllPlanets, getPlanet, 
-                getPlanetImage, getResource } = this.swapiService;
-
-        const personDetails = (
-            <ItemDetails itemId={11}
-                        getData={getPerson}
-                        getImageUrl={getPersonImage}>
-
-                <Fields field="gender" label="Gender" />
-                <Fields field="eyeColor" label="Eye Color" />
-
-            </ItemDetails>
-        );
-
-        const starshipDetails = (
-            <ItemDetails itemId={5} 
-                        getData={getStarship}
-                        getImageUrl={getStarshipImage}>
-
-                <Fields field="model" label="Model" />
-                <Fields field="length" label="Length" />
-                <Fields field="costInCredits" label="Cost" />
-                
-            </ItemDetails>
-        );
-
+       
         return (
             <ErrorBoundry>
             <div className="app">
             <Header />
+
+            <PersonDetails   itemId={5}/>
+            <PlanetDetails  itemId={5}/>
+            <StarshipDetails itemId={5}/>
+
+            <br/>
            
 
             <PersonList>
@@ -101,10 +71,6 @@ export default class App extends Component {
             <StarshipList>
             { ({name}) => <span>{name}</span> }
             </StarshipList>
-
-          
-           
-
         </div>
         </ErrorBoundry>
         )

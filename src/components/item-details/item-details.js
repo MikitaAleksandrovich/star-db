@@ -6,7 +6,7 @@ import './item-details.css';
 const Fields = ( {item, field, label} ) => {
     return (
       <li className="list-group-item">
-          <span className="term">{label}</span>
+          <span className="term">{label}: </span>
           <span>{item[field]}</span>
       </li>
     );
@@ -58,8 +58,7 @@ export default class ItemDetails extends Component {
         return <span className="notSelected"> Please, select a person from a list</span>
       }
 
-      const { name, gender, birthYear, eyeColor } = item;
-
+      const { name } = item;
 
         return (
             <div className="item-details card">

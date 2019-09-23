@@ -10,6 +10,14 @@ import ErrorBoundry from '../error-boundry';
 import ItemDetails, { Fields } from '../item-details/item-details';
 import SwapiService from '../../service/swapi-service';
 import Row from '../row';
+import {
+    PersonList,
+    PlanetList,
+    StarshipList,
+    PersonDetails,
+    PlanetDetails,
+    StarshipDetails
+} from '../sw-components';
 
 
 import './app.css';
@@ -81,27 +89,19 @@ export default class App extends Component {
             <div className="app">
             <Header />
            
-           
-            <ItemList
-            getData={getAllPeople}
-            onItemSelected={() => {}}>
 
+            <PersonList>
             { ({name}) => <span>{name}</span> }
-            </ItemList>
+            </PersonList>
 
-            <ItemList
-            getData={getAllPlanets}
-            onItemSelected={() => {}}>
-
+            <PlanetList>
             { ({name}) => <span>{name}</span> }
-            </ItemList>
+            </PlanetList>
 
-            <ItemList
-            getData={getAllStarships}
-            onItemSelected={() => {}}>
-
+            <StarshipList>
             { ({name}) => <span>{name}</span> }
-            </ItemList>
+            </StarshipList>
+
           
            
 

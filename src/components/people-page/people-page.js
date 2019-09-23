@@ -37,9 +37,7 @@ export default class PeoplePage extends Component {
         );
 
         return (
-            
             <Row left={itemList} right={personDetails} />
-        
         );
     }
 }

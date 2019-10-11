@@ -7,7 +7,7 @@ const swapiService = new SwapiService();
 
 const  { getPerson, getPersonImage, 
     getStarship, getStarshipImage,
-    getPlanet, getPlanetImage, getResource } = swapiService;
+    getPlanet, getPlanetImage } = swapiService;
 
 
 const PersonDetails = ({ itemId}) => {

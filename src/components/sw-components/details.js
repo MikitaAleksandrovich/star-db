@@ -7,7 +7,7 @@ import { SwapiServiceConsumer } from '../swapi-service-context';
 
 const swapiService = new SwapiService();
 
-const  { getPerson, getPersonImage, 
+const  { 
     getStarship, getStarshipImage,
     getPlanet, getPlanetImage } = swapiService;
 
@@ -26,42 +26,55 @@ const PersonDetails = ({ itemId}) => {
                         <Fields field="gender" label="Gender" />
                         <Fields field="eyeColor" label="Eye Color" />
 
-        </ItemDetails>
+                        </ItemDetails>
                     )
                 }
             }
         </SwapiServiceConsumer>
-        
     );
 };
 
 const PlanetDetails = ({itemId}) => {
     return (
-        <ItemDetails itemId={itemId} 
-                     getData={getPlanet}
-                     getImageUrl={getPlanetImage}>
+        <SwapiServiceConsumer>
+        {
+            ({getPlanet, getPlanetImage }) => {
+                return (
+                    <ItemDetails itemId={itemId} 
+                                getData={getPlanet}
+                                getImageUrl={getPlanetImage}>
 
-                <Fields field="population" label="Population" />
-                <Fields field="rotation" label="Rotation Period" />
-                <Fields field="diameter" label="Diameter" />
-
+                        <Fields field="population" label="Population" />
+                        <Fields field="rotation" label="Rotation Period" />
+                        <Fields field="diameter" label="Diameter" />
         </ItemDetails>
+                );
+            }
+        }
+        </SwapiServiceConsumer>
     );
 };
 
 
 const StarshipDetails = ({ itemId }) => {
-
     return (
-        <ItemDetails itemId={itemId} 
-                     getData={getStarship}
-                     getImageUrl={getStarshipImage}>
+        <SwapiServiceConsumer>
+            {
+                ({getStarship, getStarshipImage }) => {
+                    return (
+                        <ItemDetails itemId={itemId} 
+                                    getData={getStarship}
+                                    getImageUrl={getStarshipImage}>
 
-        <Fields field="model" label="Model" />
-        <Fields field="length" label="Length" />
-        <Fields field="costInCredits" label="Cost" />
+                            <Fields field="model" label="Model" />
+                            <Fields field="length" label="Length" />
+                            <Fields field="costInCredits" label="Cost" />
 
-        </ItemDetails>
+                        </ItemDetails>
+                    )
+                }
+            }
+        </SwapiServiceConsumer>
     )
 };
 

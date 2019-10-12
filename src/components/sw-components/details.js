@@ -1,15 +1,7 @@
 import React from 'react';
 
 import ItemDetails, { Fields } from '../item-details/item-details';
-import SwapiService from '../../service/swapi-service';
-
 import { SwapiServiceConsumer } from '../swapi-service-context';
-
-const swapiService = new SwapiService();
-
-const  { 
-    getStarship, getStarshipImage,
-    getPlanet, getPlanetImage } = swapiService;
 
 
 const PersonDetails = ({ itemId}) => {

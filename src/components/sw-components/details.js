@@ -3,6 +3,8 @@ import React from 'react';
 import ItemDetails, { Fields } from '../item-details/item-details';
 import SwapiService from '../../service/swapi-service';
 
+import { SwapiServiceConsumer } from '../swapi-service-context';
+
 const swapiService = new SwapiService();
 
 const  { getPerson, getPersonImage, 
@@ -13,14 +15,23 @@ const  { getPerson, getPersonImage,
 const PersonDetails = ({ itemId}) => {
 
     return (
-        <ItemDetails itemId={itemId}
-                     getData={getPerson}
-                     getImageUrl={getPersonImage}>
+        <SwapiServiceConsumer>
+            {
+                ({ getPerson, getPersonImage }) => {
+                    return (
+                        <ItemDetails itemId={itemId}
+                                    getData={getPerson}
+                                    getImageUrl={getPersonImage}>
 
-                <Fields field="gender" label="Gender" />
-                <Fields field="eyeColor" label="Eye Color" />
+                        <Fields field="gender" label="Gender" />
+                        <Fields field="eyeColor" label="Eye Color" />
 
         </ItemDetails>
+                    )
+                }
+            }
+        </SwapiServiceConsumer>
+        
     );
 };
 

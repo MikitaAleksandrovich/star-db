@@ -24,12 +24,11 @@ import './app.css';
 
 export default class App extends Component {
 
-    DummySwapiService = new DummySwapiService();
-
 
     state = {
         showRandomPlanet: false,
         hasError: false,
+        swapiService: new DummySwapiService()
     };
 
     toggleRandomPlanet = () => {
@@ -41,7 +40,16 @@ export default class App extends Component {
     };
 
     onServiceChange = () => {
-        console.log('Change Context Value');
+        this.setState(({ swapiService }) => {
+            const Service = swapiService instanceof SwapiService ? DummySwapiService : SwapiService;
+            console.log('Swithced to:', Service.name);
+        
+        return {
+            swapiService: new Service()
+        }
+        });
+
+        
     };
 
     componentDidCatch() {
@@ -62,7 +70,7 @@ export default class App extends Component {
        
         return (
             <ErrorBoundry>
-            <SwapiServiceProvider value={this.DummySwapiService}>
+            <SwapiServiceProvider value={this.state.swapiService}>
             <div className="app">
             <Header onServiceChange={this.onServiceChange}/>
 

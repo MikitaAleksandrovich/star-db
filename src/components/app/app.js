@@ -4,7 +4,8 @@ import Header from '../header';
 import RandomPlanet from '../random-planet/random-planet';
 import ErrorIndicator from '../error-indicator';
 import ErrorBoundry from '../error-boundry';
-import SwapiService from '../../service/swapi-service';
+import SwapiService from '../../service/swapi-service'; 
+import DummySwapiService from '../../service/dummy-swapi-service';
 import {
     PersonList,
     PlanetList,
@@ -20,9 +21,11 @@ import { SwapiServiceProvider } from '../swapi-service-context';
 import './app.css';
 
 
+
 export default class App extends Component {
 
-    swapiService = new SwapiService();
+    DummySwapiService = new DummySwapiService();
+
 
     state = {
         showRandomPlanet: false,
@@ -35,14 +38,18 @@ export default class App extends Component {
                 showRandomPlanet: !state.showRandomPlanet
             }
         });  
-    }
+    };
+
+    onServiceChange = () => {
+        console.log('Change Context Value');
+    };
 
     componentDidCatch() {
         console.log('componentDidCatch()');
         this.setState({
             hasError: true,
         })
-    }
+    };
 
     render() {
 
@@ -55,9 +62,9 @@ export default class App extends Component {
        
         return (
             <ErrorBoundry>
-            <SwapiServiceProvider value={this.swapiService}>
+            <SwapiServiceProvider value={this.DummySwapiService}>
             <div className="app">
-            <Header />
+            <Header onServiceChange={this.onServiceChange}/>
 
             <PersonDetails  itemId={5}/>
             <PlanetDetails  itemId={5}/>

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ItemDetails, { Fields } from '../item-details/item-details';
 import { withSwapiService } from '../HOC-helpers';
 

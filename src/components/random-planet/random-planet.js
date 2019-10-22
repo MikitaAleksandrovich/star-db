@@ -23,7 +23,6 @@ export default class RandomPlanet extends Component {
     }
 
     componentWillUnmount() {
-        console.log('componentWillUnmount()')
         clearInterval(this.interval);
     }
 
@@ -77,7 +76,7 @@ const RandomPlanetContent = ({ planet }) => {
     return (
         <React.Fragment>
                 <img className="planet-image"
-                src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} alt="planet-image"></img>
+                src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} alt={name}></img>
                 <div>
                     <h4 className="planet-name">{name}</h4>
                     <ul className="list-group list-group-flush">

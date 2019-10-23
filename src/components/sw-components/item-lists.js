@@ -1,17 +1,10 @@
 import React from 'react';
-import { withData, withSwapiService }  from '../HOC-helpers';
+import { withData, 
+        withSwapiService, 
+        withChildFunction } from '../HOC-helpers';
 import ItemList from '../item-list';
 
 
-const withChildFunction = (fn) => (Wrapped) => {
-    return (props) => {
-        return (
-            <Wrapped {...props}>
-                {fn}
-            </Wrapped>
-        )
-    }
-};
 
 const renderName = ({ name }) => <span>{name}</span>;
 const renderModelAndName = ({ name, model}) => <span>{name} (model: {model})</span>

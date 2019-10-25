@@ -20,6 +20,8 @@ const  ItemList = (props) => {
     );
   });
 
+
+
     return (
       <div>
           <ul className="item-list list-group">
@@ -27,7 +29,12 @@ const  ItemList = (props) => {
           </ul>
       </div>
     );
-  }
+};
 
-  
+ItemList.defaultProps = {
+  onItemSelected: () => {},
+};
+
+
+
 export default ItemList;

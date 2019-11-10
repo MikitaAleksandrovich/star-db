@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/MikitaAleksandrovich/star-db/static/css/main.a04a1b6a.chunk.css",
-    "main.js": "/MikitaAleksandrovich/star-db/static/js/main.1539fe23.chunk.js",
-    "main.js.map": "/MikitaAleksandrovich/star-db/static/js/main.1539fe23.chunk.js.map",
-    "runtime~main.js": "/MikitaAleksandrovich/star-db/static/js/runtime~main.119f332a.js",
-    "runtime~main.js.map": "/MikitaAleksandrovich/star-db/static/js/runtime~main.119f332a.js.map",
-    "static/js/2.f1786bf7.chunk.js": "/MikitaAleksandrovich/star-db/static/js/2.f1786bf7.chunk.js",
-    "static/js/2.f1786bf7.chunk.js.map": "/MikitaAleksandrovich/star-db/static/js/2.f1786bf7.chunk.js.map",
-    "index.html": "/MikitaAleksandrovich/star-db/index.html",
-    "precache-manifest.89ca2ba1f5f745fff9334bf0ce3dba8e.js": "/MikitaAleksandrovich/star-db/precache-manifest.89ca2ba1f5f745fff9334bf0ce3dba8e.js",
-    "service-worker.js": "/MikitaAleksandrovich/star-db/service-worker.js",
-    "static/css/main.a04a1b6a.chunk.css.map": "/MikitaAleksandrovich/star-db/static/css/main.a04a1b6a.chunk.css.map"
+    "main.css": "/star-db/static/css/main.a04a1b6a.chunk.css",
+    "main.js": "/star-db/static/js/main.1539fe23.chunk.js",
+    "main.js.map": "/star-db/static/js/main.1539fe23.chunk.js.map",
+    "runtime~main.js": "/star-db/static/js/runtime~main.a96cccf8.js",
+    "runtime~main.js.map": "/star-db/static/js/runtime~main.a96cccf8.js.map",
+    "static/js/2.f1786bf7.chunk.js": "/star-db/static/js/2.f1786bf7.chunk.js",
+    "static/js/2.f1786bf7.chunk.js.map": "/star-db/static/js/2.f1786bf7.chunk.js.map",
+    "index.html": "/star-db/index.html",
+    "precache-manifest.c33a675f97fe0dd55f939e0477f1d939.js": "/star-db/precache-manifest.c33a675f97fe0dd55f939e0477f1d939.js",
+    "service-worker.js": "/star-db/service-worker.js",
+    "static/css/main.a04a1b6a.chunk.css.map": "/star-db/static/css/main.a04a1b6a.chunk.css.map"
   }
 }
